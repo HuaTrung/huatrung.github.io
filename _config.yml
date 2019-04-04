@@ -1,0 +1,30 @@
+# External gems
+# See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
+gems:
+  - jekyll-paginate
+title: Brume
+author: Aigars Dzerviniks
+description: It's simple. It's easy to use. It's a Jekyll theme.
+
+highlighter: null
+
+url: http://localhost:4000
+baseurl: 
+
+
+# Pagination Settings
+paginate: 5
+paginate_path: "/page/:num/"
+
+
+# Custom options:
+# color_scheme: azul|ruby|amber|avocado
+# color_scheme: avocado
+
+# Site navigation
+paths:
+  home: /
+  work: /categories/work/
+  life: /categories/life/
+  share: /categories/share/
+  me: /categories/me/
