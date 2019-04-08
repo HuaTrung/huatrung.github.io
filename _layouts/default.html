@@ -5,112 +5,139 @@
   {% include head.html %}
 </head>
 
+
 <body class="home-2">
   <!--[if lt IE 8]>
         <p class="bro  wserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-  {% include header.html %}
-  <!-- search-area start -->
-  <div class="search-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="search-form">
-            <span class="search-close"></span>
-            <form action="#" method="post">
-              <input type="text" placeholder="Search here..." />
-              <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-            </form>
+    <div class="load">
+        <hr />
+        <hr />
+        <hr />
+        <hr />
+      </div>
+  <div class="main_home hidden">
+    {% include header.html %}
+    <!-- search-area start -->
+    <div class="search-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="search-form">
+              <span class="search-close"></span>
+              <form action="#" method="post">
+                <input type="text" placeholder="Search here..." />
+                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- search-area end -->
-  {% include slider.html %}
-  <!-- main-content-area start -->
+    <!-- search-area end -->
+    {% include slider.html %}
+    <!-- main-content-area start -->
 
-  <div id="main-content" class="main-content-area">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8 col-sm-12">
-          <!-- latest-reviews-area start -->
-          <div id="latest-reviews" class="latest-reviews-area">
-            
+    <div id="main-content" class="main-content-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-sm-12">
+            <!-- latest-reviews-area start -->
+            <div id="latest-reviews" class="latest-reviews-area">
 
-            {{ content }}
 
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <div class="pagination p1">
-                  {% if paginator.total_pages > 1 %}
-                  <ul>
-                    {% if paginator.previous_page %}
-                    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><li><</li></a>
-                    {% endif %}
-                    {% if paginator.page == paginator.total_pages %}
+              {{ content }}
 
-                    {% assign previous = paginator.previous_page | minus: 1 %}
-                      <a href="{{ site.paginate_path | relative_url | replace: ':num', '/'| append: previous }}/index.html"><li>{{previous}}</li></a>
-                      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><li>{{paginator.previous_page}}</li></a>
-                      <a class="is-active" href="#"><li>{{paginator.page}}</li></a>
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <div class="pagination p1">
+                    {% if paginator.total_pages > 1 %}
+                    <ul>
+                      {% if paginator.previous_page %}
+                      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        <li>
+                          <</li> </a> {% endif %} {% if paginator.page == paginator.total_pages %}
+                            {% assign previous = paginator.previous_page | minus: 1 %} <a
+                            href="{{ site.paginate_path | relative_url | replace: ':num', '/'| append: previous }}/index.html">
+                        <li>{{previous}}</li>
+                      </a>
+                      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        <li>{{paginator.previous_page}}</li>
+                      </a>
+                      <a class="is-active" href="#">
+                        <li>{{paginator.page}}</li>
+                      </a>
 
-                    {% elsif paginator.page == 1 %}
-                      <a class="is-active" href="#"><li>{{paginator.page}}</li></a>
-                      <a href="{{ paginator.previous_next_path | prepend: site.baseurl | replace: '//', '/' }}"><li>{{paginator.next_page}}</li></a>
+                      {% elsif paginator.page == 1 %}
+                      <a class="is-active" href="#">
+                        <li>{{paginator.page}}</li>
+                      </a>
+                      <a href="{{ paginator.previous_next_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        <li>{{paginator.next_page}}</li>
+                      </a>
                       {% assign next = paginator.next_page | minus: -1 %}
-                      <a href="{{ site.paginate_path | relative_url | replace: ':num', '/'| append: next }}/index.html"><li>{{next}}</li></a>
-                    {% else %}
-                    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><li>{{paginator.previous_page}}</li></a>
-                    <a class="is-active" href="#"><li>{{paginator.page}}</li></a>
-                    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><li>{{paginator.next_page}}</li></a>
-                    {% endif %}
+                      <a href="{{ site.paginate_path | relative_url | replace: ':num', '/'| append: next }}/index.html">
+                        <li>{{next}}</li>
+                      </a>
+                      {% else %}
+                      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        <li>{{paginator.previous_page}}</li>
+                      </a>
+                      <a class="is-active" href="#">
+                        <li>{{paginator.page}}</li>
+                      </a>
+                      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        <li>{{paginator.next_page}}</li>
+                      </a>
+                      {% endif %}
 
-                  
-                    {% if paginator.next_page %}
-                    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><li>></li></a>
+
+                      {% if paginator.next_page %}
+                      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                        <li>></li>
+                      </a>
+                      {% endif %}
+                    </ul>
                     {% endif %}
-                  </ul>
-                  {% endif %}
+                  </div>
                 </div>
               </div>
             </div>
+
+            <!-- latest-reviews-area end -->
           </div>
-         
-          <!-- latest-reviews-area end -->
-        </div>
-        {% unless page.id %}
-        <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
-          <div class="sidebar-area fix">
-            {% include aboutme.html%}
-            {% include followme.html %}
-            <div class="single-sidebar-widget">
-              <div class="sidebar-content ad-design">
-                <div class="ad-banner">
-                  <a href="#"><img src="{{ 'assets/img/sidebar/alone.png'}}" alt="Ad Banner" /></a>
-                  <div class="ad-banner-overlay">
-                    <div class="banner-text">
-                      <p>ad design</p>
-                      <span>310&nbsp;X&nbsp;200</span>
+          {% unless page.id %}
+          <div class="col-md-4 col-md-offset-0 col-sm-8 col-sm-offset-2">
+            <div class="sidebar-area fix">
+              {% include aboutme.html%}
+              {% include followme.html %}
+              <div class="single-sidebar-widget">
+                <div class="sidebar-content ad-design">
+                  <div class="ad-banner">
+                    <a href="#"><img src="{{ 'assets/img/sidebar/alone.png'}}" alt="Ad Banner" /></a>
+                    <div class="ad-banner-overlay">
+                      <div class="banner-text">
+                        <p>ad design</p>
+                        <span>310&nbsp;X&nbsp;200</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div><!-- /.sidebar-content -->
-            </div><!-- /.single-sidebar-widget -->
-            {% include category.html%}
-            {% include tag_cloud.html %}
-          </div><!-- /.sidebar-area -->
+                </div><!-- /.sidebar-content -->
+              </div><!-- /.single-sidebar-widget -->
+              {% include category.html%}
+              {% include tag_cloud.html %}
+            </div><!-- /.sidebar-area -->
+          </div>
+          {% endunless %}
         </div>
-        {% endunless %}
       </div>
     </div>
+    <!-- main-content-area end -->
+
+    <!-- footer-area start -->
+    {% include footer.html %}
+    <!-- footer-area end -->
   </div>
-  <!-- main-content-area end -->
-
-  <!-- footer-area start -->
-  {% include footer.html %}
-  <!-- footer-area end -->
-
   <!-- footer javascript -->
   {% include footer_js.html %}
 
