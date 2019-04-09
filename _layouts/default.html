@@ -18,24 +18,11 @@
       </div>
   <div class="main_home hidden">
     {% include header.html %}
-    <!-- search-area start -->
-    <div class="search-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="search-form">
-              <span class="search-close"></span>
-              <form action="#" method="post">
-                <input type="text" placeholder="Search here..." />
-                <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- search-area end -->
-    {% include slider.html %}
+    
+    {% unless page.url contains "html" %}
+      {% include slider.html %}
+    {% endunless %}
+    
     <!-- main-content-area start -->
 
     <div id="main-content" class="main-content-area">
@@ -54,31 +41,40 @@
                     {% if paginator.total_pages > 1 %}
                     <ul>
                       {% if paginator.previous_page %}
-                      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
-                        <li>
-                          <</li> </a> {% endif %} {% if paginator.page == paginator.total_pages %}
-                            {% assign previous = paginator.previous_page | minus: 1 %} <a
-                            href="{{ site.paginate_path | relative_url | replace: ':num', '/'| append: previous }}/index.html">
-                        <li>{{previous}}</li>
-                      </a>
-                      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
-                        <li>{{paginator.previous_page}}</li>
-                      </a>
-                      <a class="is-active" href="#">
-                        <li>{{paginator.page}}</li>
-                      </a>
-
+                      <a href="{{ paginator.previous_page_path }}"><li><</li> </a>
+                       {% endif %}
+                       
+                      {% if paginator.page == paginator.total_pages %}
+                        {% assign previous = paginator.previous_page | minus: 1 %}
+                        {% if previous == 0 %}
+                          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                            <li>{{paginator.previous_page}}</li>
+                          </a>
+                          <a class="is-active" href="#">
+                            <li>{{paginator.page}}</li>
+                          </a>
+                        {% else %}
+                          <a href="{{ site.paginate_path | relative_url | replace: ':num', previous }}">
+                            <li>{{previous}}</li>
+                          </a>
+                          <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                            <li>{{paginator.previous_page}}</li>
+                          </a>
+                          <a class="is-active" href="#">
+                            <li>{{paginator.page}}</li>
+                          </a>
+                        {% endif %}
                       {% elsif paginator.page == 1 %}
-                      <a class="is-active" href="#">
-                        <li>{{paginator.page}}</li>
-                      </a>
-                      <a href="{{ paginator.previous_next_path | prepend: site.baseurl | replace: '//', '/' }}">
-                        <li>{{paginator.next_page}}</li>
-                      </a>
-                      {% assign next = paginator.next_page | minus: -1 %}
-                      <a href="{{ site.paginate_path | relative_url | replace: ':num', '/'| append: next }}/index.html">
-                        <li>{{next}}</li>
-                      </a>
+                        <a class="is-active" href="#">
+                          <li>{{paginator.page}}</li>
+                        </a>
+                        <a href="{{ paginator.next_page_path }}">
+                          <li>{{paginator.next_page}}</li>
+                        </a>
+                        {% assign next = paginator.next_page | minus: -1 %}
+                        <a href="{{ site.paginate_path | relative_url | replace: ':num', next }}">
+                          <li>{{next}}</li>
+                        </a>
                       {% else %}
                       <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">
                         <li>{{paginator.previous_page}}</li>
@@ -93,7 +89,7 @@
 
 
                       {% if paginator.next_page %}
-                      <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">
+                      <a href="{{ paginator.next_page_path }}">
                         <li>></li>
                       </a>
                       {% endif %}
@@ -122,11 +118,12 @@
                       </div>
                     </div>
                   </div>
-                </div><!-- /.sidebar-content -->
-              </div><!-- /.single-sidebar-widget -->
-              {% include category.html%}
-              {% include tag_cloud.html %}
-            </div><!-- /.sidebar-area -->
+                </div>
+              </div>
+              <!-- /.single-sidebar-widget 
+               include category.html
+               include tag_cloud.html -->
+            </div>
           </div>
           {% endunless %}
         </div>
