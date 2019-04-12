@@ -6,8 +6,8 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Wed, 10 Apr 2019 11:59:10 +0700</pubDate>
-    <lastBuildDate>Wed, 10 Apr 2019 11:59:10 +0700</lastBuildDate>
+    <pubDate>Sat, 13 Apr 2019 00:54:41 +0700</pubDate>
+    <lastBuildDate>Sat, 13 Apr 2019 00:54:41 +0700</lastBuildDate>
 
     
       <item>
@@ -26,17 +26,15 @@
 &lt;hr /&gt;
 &lt;h3&gt; How does Kafka start?&lt;/h3&gt;
 &lt;p&gt;&lt;u&gt;&lt;em&gt;It looks simple at first:&lt;/em&gt;&lt;/u&gt;  When we have only one data source and one target system.
-data source  ——–&amp;gt; target system&lt;/p&gt;
-
-&lt;p&gt;&lt;u&gt;&lt;em&gt;Things now became really complicated:&lt;/em&gt;&lt;/u&gt;&lt;/p&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;img src=&quot;/assets/img/blog/ds1.png&quot; alt=&quot;Simple process&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;u&gt;&lt;em&gt;Things now became really complicated:&lt;/em&gt;&lt;/u&gt;&lt;/p&gt;
 &lt;p&gt; Because of new marketing stragety, We need to collect more kind of data and supply for more target systems. It turns out that your project has 4 data sources and 4 target systems. Then we have 16 integrations because they all have to exchange data with one another:&lt;/p&gt;
-
-&lt;p&gt;data source  ——–&amp;gt; target system
-data source  ——–&amp;gt; target system
-data source  ——–&amp;gt; target system
-data source  ——–&amp;gt; target system&lt;/p&gt;
-
-&lt;p&gt;After running 3 months, you realize that each integration generate some difficulties:&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+ &lt;img src=&quot;/assets/img/blog/ds2.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+After running 3 months, you realize that each integration generate some difficulties:&lt;/p&gt;
 &lt;ul&gt;
     &lt;li&gt;- Protocol: How the data is transported ( TCP, REST, ....)&lt;/li&gt;
     &lt;li&gt;- Data format : How the data is parsed and extracted ( JSON, CSV, Binary, ... )&lt;/li&gt;

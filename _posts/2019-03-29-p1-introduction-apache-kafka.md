@@ -18,16 +18,14 @@ Apache Kafka was originally developed by LinkedIn, and was subsequently open sou
 ________________________________________
 <h3> How does Kafka start?</h3>
 <u><em>It looks simple at first:</em></u>  When we have only one data source and one target system.
-data source  --------> target system
-
+<br><br><br><br>
+![Simple process](/assets/img/blog/ds1.png)
+<br><br><br>
 <u><em>Things now became really complicated:</em></u>
 <p> Because of new marketing stragety, We need to collect more kind of data and supply for more target systems. It turns out that your project has 4 data sources and 4 target systems. Then we have 16 integrations because they all have to exchange data with one another:</p>
-
-data source  --------> target system
-data source  --------> target system
-data source  --------> target system
-data source  --------> target system
-
+<br><br><br>
+ ![Complicated process](/assets/img/blog/ds2.png)
+<br><br><br><br>
 After running 3 months, you realize that each integration generate some difficulties:
 <ul>
     <li>- Protocol: How the data is transported ( TCP, REST, ....)</li>

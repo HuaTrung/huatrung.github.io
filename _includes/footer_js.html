@@ -19,13 +19,16 @@
 <!-- main JS
 ============================================ -->
 <script src="{{ '/assets/js/main.js'}}"></script>
-
 <script>
   window.addEventListener("load",function(event){
 
     $(".preloader").addClass( "hidden" );
     $(".main_home").removeClass( "hidden" );
     event.preventDefault();
+
+    var owl = $('.owl-wrapper');
+    owl.trigger('play.owl.autoplay',[1])
+
     var LeafScene = function(el) {
     this.viewport = el;
     this.world = document.createElement('div');

@@ -37,7 +37,7 @@
  owl active
 ------------------------------ */  
 	$("#main-carousel").owlCarousel({
-      autoPlay: true, 
+      autoPlay: false, 
 	  slideSpeed:1000,
 	  pagination:false,
 	  navigation:true,	  
@@ -46,7 +46,7 @@
 	});
 
 	$("#top-carousel").owlCarousel({
-      autoPlay: false, 
+      autoPlay: true, 
 	  slideSpeed:1000,
 	  pagination:false,
 	  navigation:true,  
@@ -62,7 +62,8 @@
 	  this.$owlItems.removeClass('active')
 	  //add class active
 	  this.$owlItems //owl internal $ object containing items
-	  .eq(this.currentItem + 1).addClass('active')
+		.eq(this.currentItem + 1).addClass('active')
+		
 	  }
 	});
 
