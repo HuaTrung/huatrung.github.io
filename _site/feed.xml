@@ -6,8 +6,8 @@
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Sat, 13 Apr 2019 00:54:41 +0700</pubDate>
-    <lastBuildDate>Sat, 13 Apr 2019 00:54:41 +0700</lastBuildDate>
+    <pubDate>Sat, 13 Apr 2019 11:55:09 +0700</pubDate>
+    <lastBuildDate>Sat, 13 Apr 2019 11:55:09 +0700</lastBuildDate>
 
     
       <item>
@@ -27,12 +27,12 @@
 &lt;h3&gt; How does Kafka start?&lt;/h3&gt;
 &lt;p&gt;&lt;u&gt;&lt;em&gt;It looks simple at first:&lt;/em&gt;&lt;/u&gt;  When we have only one data source and one target system.
 &lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
-&lt;img src=&quot;/assets/img/blog/ds1.png&quot; alt=&quot;Simple process&quot; /&gt;
+&lt;img src=&quot;/assets/img/blog/content/ds1.png&quot; alt=&quot;Simple process&quot; /&gt;
 &lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
 &lt;u&gt;&lt;em&gt;Things now became really complicated:&lt;/em&gt;&lt;/u&gt;&lt;/p&gt;
 &lt;p&gt; Because of new marketing stragety, We need to collect more kind of data and supply for more target systems. It turns out that your project has 4 data sources and 4 target systems. Then we have 16 integrations because they all have to exchange data with one another:&lt;/p&gt;
 &lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
- &lt;img src=&quot;/assets/img/blog/ds2.png&quot; alt=&quot;Complicated process&quot; /&gt;
+ &lt;img src=&quot;/assets/img/blog/content/ds2.png&quot; alt=&quot;Complicated process&quot; /&gt;
 &lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
 After running 3 months, you realize that each integration generate some difficulties:&lt;/p&gt;
 &lt;ul&gt;
@@ -45,7 +45,13 @@ After running 3 months, you realize that each integration generate some difficul
 &lt;p&gt;&lt;br /&gt;
 &lt;strong&gt;Then, Kafka comes in like the Buddha to solves all the bottlenecks.&lt;/strong&gt;&lt;/p&gt;
 
-&lt;p&gt;It allows to decouple your entry data streams and systems. Now, the source system will push your data into Kafka. While, the target system will source data straight from Kafka. With Kafka’s help, what it enables is really really nice.&lt;/p&gt;
+&lt;p&gt;It allows to decouple your entry data streams and systems . Now, the source system will push your data into Kafka. While, the target system will source data straight from Kafka. With Kafka’s help, what it enables is really really nice .&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+ &lt;img src=&quot;/assets/img/blog/content/ds3.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;We can have any data sources you can think like SERVER LOG, USER BEHAVIOR, PAYMENT TRANSACTIONS, … . After that, when data is in Kafka, you could put it into any target systems such as DATABASE, METRIC, AUDIT, ANALYTICS, … (above image)&lt;/p&gt;
 
 &lt;hr /&gt;
 &lt;h3&gt; Why would we need to use Apache Kafka ?&lt;/h3&gt;
@@ -70,6 +76,7 @@ After running 3 months, you realize that each integration generate some difficul
 &lt;hr /&gt;
 &lt;h3&gt; Can I believe you ? &lt;/h3&gt;
 &lt;p&gt;Don’t believe me. You can believe 2000 plus firms and 35% of the Fortune 500 that uses Kafka as their backbone.
+&lt;br /&gt;
 &lt;u&gt;Concrete example:&lt;/u&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;- Netflix uses Kafka to apply recommendations in real-time while you're watching TV shows.&lt;/li&gt;

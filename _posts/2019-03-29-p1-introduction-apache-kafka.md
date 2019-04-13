@@ -19,12 +19,12 @@ ________________________________________
 <h3> How does Kafka start?</h3>
 <u><em>It looks simple at first:</em></u>  When we have only one data source and one target system.
 <br><br><br><br>
-![Simple process](/assets/img/blog/ds1.png)
+![Simple process](/assets/img/blog/content/ds1.png)
 <br><br><br>
 <u><em>Things now became really complicated:</em></u>
 <p> Because of new marketing stragety, We need to collect more kind of data and supply for more target systems. It turns out that your project has 4 data sources and 4 target systems. Then we have 16 integrations because they all have to exchange data with one another:</p>
 <br><br><br>
- ![Complicated process](/assets/img/blog/ds2.png)
+ ![Complicated process](/assets/img/blog/content/ds2.png)
 <br><br><br><br>
 After running 3 months, you realize that each integration generate some difficulties:
 <ul>
@@ -37,7 +37,13 @@ After running 3 months, you realize that each integration generate some difficul
 <br>
 <strong>Then, Kafka comes in like the Buddha to solves all the bottlenecks.</strong>
 
-It allows to decouple your entry data streams and systems. Now, the source system will push your data into Kafka. While, the target system will source data straight from Kafka. With Kafka's help, what it enables is really really nice.
+It allows to decouple your entry data streams and systems . Now, the source system will push your data into Kafka. While, the target system will source data straight from Kafka. With Kafka's help, what it enables is really really nice .
+
+<br><br><br>
+ ![Complicated process](/assets/img/blog/content/ds3.png)
+<br><br><br>
+
+We can have any data sources you can think like SERVER LOG, USER BEHAVIOR, PAYMENT TRANSACTIONS, ... . After that, when data is in Kafka, you could put it into any target systems such as DATABASE, METRIC, AUDIT, ANALYTICS, ... (above image)
 
 ________________________________________
 <h3> Why would we need to use Apache Kafka ?</h3>
@@ -62,6 +68,7 @@ ________________________________________
 ________________________________________
 <h3> Can I believe you ? </h3>
 Don't believe me. You can believe 2000 plus firms and 35% of the Fortune 500 that uses Kafka as their backbone.
+<br>
 <u>Concrete example:</u>
 <ul>
 <li>- Netflix uses Kafka to apply recommendations in real-time while you're watching TV shows.</li>
