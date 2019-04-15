@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "[Part 1 - Kafka] Introduction"
+title: "[Kafka for Dummies - Part 1] Introduction"
 description: "Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage."
 image: apache-kafka.png
 tags: [sample post, readability, test]
 categories: work
 ---
 
-Big Data is way too hotter than you think. It's gonna get hotter and show no signs of stopping. One of the biggest challenges associated with Big Data is, turn data into meaningful insights. However before diving into that part, the data has to be first collected then is transfered impeccably in purpose of the availability to the end-users. Hadoop, Spark, Scala, ElasticSearch, ... are types of platforms, frameworks and technologies which have emerged to help us handle the ever-growing amount of data over the internet. Among them, Kafka plays an important role.
+Big Data is way too hotter than you think. It's gonna get hotter and show no signs of stopping. One of the biggest challenges associated with Big Data is, turn data into meaningful insights. However before diving into that part, the data has to be first collected then is transfered impeccably in purpose of the availability to the end-users. Hadoop, Spark, Scala, ElasticSearch, ... are types of platforms, frameworks and technologies which have emerged to help us handle the ever-growing amount of data over the internet. Among them, Kafka plays an important role. Kafka's not hard to learn but it has many remarkable theories and concepts. That's where this series comes in. To those who know nothing about Kafka or wanna revise quickly, my goal is to supply all the basics you need. At the end of the road, you will get a concise overview and apply Kafka easily.  
 
 ________________________________________
 <h3> What is Kafka ?</h3>
@@ -26,7 +26,7 @@ ________________________________________
 <br><br><br>
  ![Complicated process](/assets/img/blog/content/ds2.png)
 <br><br><br><br>
-After running 3 months, you realize that each integration generate some difficulties:
+But somewhere down the road, you realize that each integration generate some difficulties:
 <ul>
     <li>- Protocol: How the data is transported ( TCP, REST, ....)</li>
     <li>- Data format : How the data is parsed and extracted ( JSON, CSV, Binary, ... )</li>
@@ -75,5 +75,5 @@ Don't believe me. You can believe 2000 plus firms and 35% of the Fortune 500 tha
 <li>- Uber uses Kafka to gather user, taxi and trip data in real-time to compute and forecast demand, and compute surge pricing in real-time.</li>
 <li>- Linkedin uses Kafka to prevent spam, collect user interactions to make better connection recommendations in real-time.</li>
 </ul>
-Rememeber that Kafka is only used as transportation mechanism!s
+<b>Rememeber that Kafka is only used as transportation mechanism! </b>
 
