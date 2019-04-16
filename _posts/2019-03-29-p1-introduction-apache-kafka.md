@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Kafka for Dummies - Part 1] Introduction"
-description: "Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage."
+description: "That's where this series comes in. To those who know nothing about Kafka or wanna revise quickly, my goal is to supply all the basics you need. At the end of the road, you will get a concise overview and apply Kafka easily."
 image: apache-kafka.png
 tags: [sample post, readability, test]
 categories: work
