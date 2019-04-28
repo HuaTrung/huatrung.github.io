@@ -32,7 +32,7 @@ title: Home
       <div class="post-content">
         <h6 class="post-title" ><a href="{{ post.url | absolute_url }}"title="{{ post.title }}">{{ post.title }}</a></h6>
         <p class="post-short-desc">{{ post.description}}</p>
-        <a href="#" class="continue-link">Continue Reading...</a>
+        <a href="{{ post.url | absolute_url }}" class="continue-link">Continue Reading...</a>
       </div>
     </div><!-- /.single-review -->
   </div>
