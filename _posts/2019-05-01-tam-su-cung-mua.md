@@ -32,4 +32,4 @@ Tôi thở dài.
 <p>- Em lần này đến sao vô tình đến thế để tôi chìm vào những cảm xúc bất tận và dòng suy nghĩ miên man. </p>
 
 Mưa mãi rơi, người ngơ ngẩn mãi nơi đây. Mưa nhỏ dần, nhỏ dần rồi tạnh hẳn. Cây cối rùng mình hắt những giọt nước còn đọng lại trên lá cành để đón chào những tia nắng rực rỡ. Không gian thật thoáng đãng. Tôi thẫn thờ còn chưa kịp hỏi.
-> <p style="font-size:16px"> Sài gòn nóng vậy cũng đã đổ mưa. Em khó tính như vậy khi nào mới đổ tôi.</p>
+> <p style="font-size:16px"> Sài Gòn nóng vậy cũng đã đổ mưa. Em khó tính như vậy khi nào mới đổ tôi.</p>
