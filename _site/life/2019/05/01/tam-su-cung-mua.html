@@ -182,79 +182,38 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="single-blog-details">
-            <h1 class="post-title">[Kafka for Dummies - Part 1] Introduction</h1>
-            <p class="post-date">Posted on 29 March 2019</p>
+            <h1 class="post-title">Tâm sự cùng mưa</h1>
+            <p class="post-date">Posted on 01 May 2019</p>
             <div class="post-long-desc">
-              <p>Big Data is way too hotter than you think. It’s gonna get hotter and show no signs of stopping. One of the biggest challenges associated with Big Data is, turn data into meaningful insights. However before diving into that part, the data has to be first collected then is transfered impeccably in purpose of the availability to the end-users. Hadoop, Spark, Scala, ElasticSearch, … are types of platforms, frameworks and technologies which have emerged to help us handle the ever-growing amount of data over the internet. Among them, Kafka plays an important role. Kafka’s not hard to learn but it has many remarkable theories and concepts. That’s where this series comes in. To those who know nothing about Kafka or wanna revise quickly, my goal is to supply all the basics you need. At the end of the road, you will get a concise overview and apply Kafka easily.</p>
+              <p>Tại thời điểm bản tình ca ánh trăng chuẩn bị nhường chỗ cho những tia nắng nhộn nhịp, tôi gặp lại người bạn cũ của mình. Mưa . Cơn mưa không báo trước này này rả rích cuốn trôi đi phần nào cái oi bức của những ngày hạ Sài gòn. Mưa không to lắm, nhẹ nhàng rải đều trong không trung. Có lẽ đúng khi nói mưa là sự kết nối đến tâm tư người ngắm mưa. Bất giác từ lúc nào bàn tay tôi đã đưa ra đón lấy những giọt mưa.
+<br /></p>
+<p>- Mưa à, phải sống dưới cái nắng dài hơi và khắc nghiệt, tôi mới thấy trân trọng em. Tôi không nhận mình là người hoàn toàn yêu mưa, nhưng cũng phải yêu đến 8 9 phần. Mưa thì mát nhưng tát vào mặt không trượt phát nào thì lại rất đau vậy nên yêu em tôi không thể "yêu cả đường đi lối về." </p>
 
-<hr />
-<h3> What is Kafka ?</h3>
-<p>It is a distributed publish-subscribe messaging system that specifically designed for the high-speed, real-time, scalable and low-latency information processing.</p>
+<p>- Có biết bao nhiêu người nói yêu mưa trong khi mở to dù mỗi khi ta đến và ngươi cũng không ngoại lệ. Ta biết ngươi cũng hơn hai chục năm rồi chỉ toàn nghe ngươi nói " vãi, lại mưa à" hay là " mưa lâu vậy khi nào mới tạnh" chứ bao giờ có " mưa rồi, vui quá " đâu.</p>
 
-<p>Apache Kafka was originally developed by LinkedIn, and was subsequently open sourced in early 2011. Being open source means that It is essentially free to use and has a large community who contributes towards updates and new features.</p>
+<p>- Khi yêu người ta sẽ ngại nên gửi gắm lời yêu thương qua những câu chửi. Thương cho chửi cho trù mà.</p>
 
-<hr />
-<h3> How does Kafka start?</h3>
-<p><u><em>It looks simple at first:</em></u>  When we have only one data source and one target system.
-<br /><br /><br /><br />
-<img src="/assets/img/blog/content/ds1.png" alt="Simple process" />
-<br /><br /><br />
-<u><em>Things now became really complicated:</em></u></p>
-<p> Because of new marketing stragety, We need to collect more kind of data and supply for more target systems. It turns out that your project has 4 data sources and 4 target systems. Then we have 16 integrations because they all have to exchange data with one another:</p>
-<p><br /><br /><br />
- <img src="/assets/img/blog/content/ds2.png" alt="Complicated process" />
-<br /><br /><br /><br />
-But somewhere down the road, you realize that each integration generate some difficulties:</p>
-<ul>
-    <li>- Protocol: How the data is transported ( TCP, REST, ....)</li>
-    <li>- Data format : How the data is parsed and extracted ( JSON, CSV, Binary, ... )</li>
-    <li>- Data schema &amp; evolution : How the data is formed and may change in the future.</li>
-    <li>- Each source system will increased load from the connection</li>
-</ul>
+<p>- Điêu thật, tin thì chắc không tin nổi đâu chi bằng nói những gì ngươi cảm nhận về ta đi. Nghìn lời giả dối không bằng một cảm xúc chân thật.</p>
 
+<p>- Uhm được. Khi còn nhỏ vô lo vô nghĩ, tôi thích nghe những âm thanh tí tách khi những hạt mưa rơi xuống đất hay trên nóc nhà tạo nên một bản nhạc nhẹ nhàng lắng đọng. Khi đó, tôi cũng rất thích đi với em, từng hạt mưa rơi trên người như cuốn phăng mọi mệt mỏi. Tôi thích tiếng mưa tầm tã đủ để thành điệu ru khi tôi vùi đầu vào chăn ấm, ngủ một giấc cho đến sáng, và tuyệt hơn nữa là khi thức dậy trời vẫn còn mưa. Tôi thích hơi lạnh từ mưa tô điểm cho bầu không khí ấm áp quây quần bên gia đình.</p>
+
+<p>- Ta cũng thích ngươi khi nhỏ hơn, những ngày đó ngươi không chửi rủa ta. Lần nào ta đến cũng đòi ra chơi với ta mặc dù bị mẹ cấm hay ngày hôm sau lăn đùng ra ốm. Đã yếu mà còn đòi ra mưa.</p>
+
+<p>- Vậy là đủ chứng minh chưa ?.</p>
+
+<p>- Đó là lúc nhỏ, ngươi có biết gì đâu. Và những gì ngươi nói đều do ta đem đến chứ không phải cảm nhận về ta. Lớn lên thì mỗi lần ta đến, ngươi lại chửi liên tục không trật nhịp nào cho đến khi ta đi vẫn còn dư âm.</p>
+
+<p>- Khi lớn, tôi thích ngắm nhìn hơn là đứng trong em. Vì tắm mưa thì không cuốn phăng mọi ưu phiền được nữa và nhờ đó tôi mới thấy được em rõ hơn. Em trong con mắt của kẻ đa tình đa sầu luôn là dáng dấp của nỗi buồn, hình dạng của của cô đơn và hương vị của những hoài niệm kí ức. Nhưng hơn mọi thứ, em đem đến cho tôi sự thú vị và một khoảng lặng. Khi em vừa đến, đường phố nhộn nhịp hơn, người lớn thì vội vã, các bạn nữ sinh thì hối hả. Vậy mà mấy thằng nhóc lại vui mừng chạy ra đường tắm mưa, hò hét ầm ĩ. Một lúc sau đường vắng hơn, chỉ còn lại vài chiếc xa lầm lũi chạy đua với những hạt nước nặng trĩu. Những lúc này thích nhất là đứng dưới hiên nhà đứng dưới bầu trời đen âm ỉ, ngắm nhìn những giọt mưa tưới mát cho vạn vật, cảm nhận được làn hơi mát lạnh và nhẹ nhàng mở ra căn phòng của những ký ức. Tưởng đã khóa kín cửa nhưng em lại khơi gợi cho tôi những hoài niệm dần mơ hồ. Khi bên cạnh chỉ còn mưa, tôi chẳng còn sức để giữ lại những suy nghĩ cho riêng mình. Trong mưa, con phố chợt thênh thang hơn, con đường bỗng dài và hiu quạnh nhưng lòng người thì bé lại gói gọn chỉ bằng một nỗi nhớ. Chả sai khi nói " người buồn cảnh có vui đâu bao giờ ". Dường như mưa trở nên nặng nề hơn khi tâm tư ta nặng trĩu tâm trạng.</p>
 <p><br />
-<strong>Then, Kafka comes in like the Buddha to solves all the bottlenecks.</strong></p>
+ <img src="/assets/img/blog/title/tam-su-cung-mua.png" alt="Tamsu" />
+<br /><br />
+Tôi thở dài.</p>
+<p>- Em lần này đến sao vô tình đến thế để tôi chìm vào những cảm xúc bất tận và dòng suy nghĩ miên man. </p>
 
-<p>It allows to decouple your entry data streams and systems . Now, the source system will push your data into Kafka. While, the target system will source data straight from Kafka. With Kafka’s help, what it enables is really really nice .</p>
-
-<p><br /><br /><br />
- <img src="/assets/img/blog/content/ds3.png" alt="Complicated process" />
-<br /><br /><br /></p>
-
-<p>We can have any data sources you can think like SERVER LOG, USER BEHAVIOR, PAYMENT TRANSACTIONS, … . After that, when data is in Kafka, you could put it into any target systems such as DATABASE, METRIC, AUDIT, ANALYTICS, … (above image)</p>
-
-<hr />
-<h3> Why would we need to use Apache Kafka ?</h3>
-<p><u>Considering its standout:<u></u></u></p>
-<ul>
-    <li>-  Distributed, resilient architecture, fault tolerant.</li>
-    <li>-  Horizontal scalability: scale to 100s of brokers and scale to millions of messages per second.</li>
-    <li>-  High performance (the latency to exchange data from one system to another is usually less than 10ms) and It's realtime.</li>
-</ul>
-
-<p><br />
-<u>And its use cases: </u></p>
-<ul>
-    <li>-  Messaging System.</li>
-    <li>-  Activity Tracking</li>
-    <li>-  Gather metrics from many different locations ( IoT devices )</li>
-    <li>-  Application Logs gathering</li>
-    <li>-  Stream processing ( with the Kafka Stream API or Spark for example )</li>
-    <li>-  De-coupling of system dependencies</li>
-    <li>-  Integration with Spark, Flink, Storm, Hadoop and many other Big Data technologies.</li>
-</ul>
-<hr />
-<h3> Can I believe you ? </h3>
-<p>Don’t believe me. You can believe 2000 plus firms and 35% of the Fortune 500 that uses Kafka as their backbone.
-<br />
-<u>Concrete example:</u></p>
-<ul>
-<li>- Netflix uses Kafka to apply recommendations in real-time while you're watching TV shows.</li>
-<li>- Uber uses Kafka to gather user, taxi and trip data in real-time to compute and forecast demand, and compute surge pricing in real-time.</li>
-<li>- Linkedin uses Kafka to prevent spam, collect user interactions to make better connection recommendations in real-time.</li>
-</ul>
-<p><b>Rememeber that Kafka is only used as transportation mechanism! </b></p>
-
+<p>Mưa mãi rơi, người ngơ ngẩn mãi nơi đây. Mưa nhỏ dần, nhỏ dần rồi tạnh hẳn. Cây cối rùng mình hắt những giọt nước còn đọng lại trên lá cành để đón chào những tia nắng rực rỡ. Không gian thật thoáng đãng. Tôi thẫn thờ còn chưa kịp hỏi.</p>
+<blockquote>
+  <p style="font-size:16px"> Sài gòn nóng vậy cũng đã đổ mưa. Em khó tính như vậy khi nào mới đổ tôi.</p>
+</blockquote>
 
             </div>
             <div class="single-blog-bottom fix">
