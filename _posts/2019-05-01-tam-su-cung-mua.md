@@ -6,7 +6,7 @@ image: tam-su-cung-mua.png
 categories: life
 ---
 
-Tại thời điểm bản tình ca ánh trăng chuẩn bị nhường chỗ cho những tia nắng nhộn nhịp, tôi gặp lại người bạn cũ của mình. Mưa . Cơn mưa không báo trước này này rả rích cuốn trôi đi phần nào cái oi bức của những ngày hạ Sài gòn. Mưa không to lắm, nhẹ nhàng rải đều trong không trung. Có lẽ đúng khi nói mưa là sự kết nối đến tâm tư người ngắm mưa. Bất giác từ lúc nào bàn tay tôi đã đưa ra đón lấy những giọt mưa.
+Tại thời điểm bản tình ca ánh trăng chuẩn bị nhường chỗ cho những tia nắng nhộn nhịp, tôi gặp lại người bạn cũ của mình. Mưa . Cơn mưa không báo trước này rả rích cuốn trôi đi phần nào cái oi bức của những ngày hạ Sài Gòn. Mưa không to lắm, nhẹ nhàng rải đều trong không trung. Có lẽ đúng khi nói mưa là sự kết nối đến tâm tư người ngắm mưa. Bất giác từ lúc nào bàn tay tôi đã đưa ra đón lấy những giọt mưa.
 <br>
 <p>- Mưa à, phải sống dưới cái nắng dài hơi và khắc nghiệt, tôi mới thấy trân trọng em. Tôi không nhận mình là người hoàn toàn yêu mưa, nhưng cũng phải yêu đến 8 9 phần. Mưa thì mát nhưng tát vào mặt không trượt phát nào thì lại rất đau vậy nên yêu em tôi không thể "yêu cả đường đi lối về." </p>
 
