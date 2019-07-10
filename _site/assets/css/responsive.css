@@ -167,7 +167,13 @@
 
 /* small mobile :320px. */
 @media (max-width: 767px) {
-	.container {width:300px}
+	.container {
+		width:100%;
+		font-size: 14px;
+	}
+	h1{
+		font-size: 20px !important;
+	}
 	.header-top .col-xs-6 {
 		width:100%;
 		display: block;
@@ -336,7 +342,7 @@
  
 /* Large Mobile :480px. */
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-	.container {width:450px;}
+	.container {widows: 100%;}
 	.header-top .col-xs-6{
 		padding-left:0px;
 		padding-right:0px;
