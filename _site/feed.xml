@@ -6,9 +6,122 @@
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Sun, 21 Jul 2019 21:31:49 -0500</pubDate>
-    <lastBuildDate>Sun, 21 Jul 2019 21:31:49 -0500</lastBuildDate>
+    <pubDate>Fri, 26 Jul 2019 05:20:37 -0500</pubDate>
+    <lastBuildDate>Fri, 26 Jul 2019 05:20:37 -0500</lastBuildDate>
 
+    
+      <item>
+        <title>Tối ưu hóa cache với LFU và LRU</title>
+        <link>http://0.0.0.0:4000/work/2019/07/24/implement-cache-lru-lfu.html</link>
+        <pubDate>Wed, 24 Jul 2019 00:00:00 -0500</pubDate>
+        <author></author>
+        <description>&lt;p&gt;Tối ưu hóa luôn là vấn đề được quan tâm hàng đầu trong nhiều lĩnh vực. Bởi vì tài nguyên chúng ta đang sử dụng có giới hạn, vậy nên con người luôn tìm cách giảm thiếu chi phí và thời gian tới mức tối thiểu.&lt;/p&gt;
+
+&lt;p&gt;Trong lập trình cũng vậy, chúng ta cũng phải đối mặt với vấn đề tối ưu hóa thường xuyên. Thực tế, câu hỏi &lt;b&gt;“Làm sao để tối ưu ?”&lt;/b&gt; được đặt ra nhiều hơn khi đi làm so với khi còn ngồi trên ghế nhà trường.&lt;/p&gt;
+
+&lt;p&gt;Khi còn ở trường, vấn đề tối ưu đầu tiên tôi gặp phải là &lt;b&gt; tối ưu thuật toán fibonaci&lt;/b&gt;. Nếu sử dụng cách đệ quy thông thường thì O(n) sẽ là 2&lt;sup&gt;n&lt;/sup&gt;. Để tối ưu bài toán, có thể cân nhắc đến kĩ thuật &lt;b&gt;memorization&lt;/b&gt; giảm chi phí cho bài toán xuống còn O(n) = n. Bản chất đằng sau của thuật toán này là lưu lại các giá trị đã tính trước để phục vụ cho sau này.&lt;/p&gt;
+
+&lt;p&gt;Khi đi làm, để tối ưu trải nghiệm của người dùng sử dụng website thì tôi sử dụng cache. Đây là một hệ thống quan trọng để cải thiện hiệu năng của ứng dụng thông qua việc cho phép truy cập và trích xuất dữ liệu nhanh hơn. Mặc dù có khá nhiều ứng dụng cho cache và phụ thuộc vào tính chất công việc, nhưng ý tưởng đằng sau đó khá đơn giản.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p style=&quot;font-size:16px;text-align:center&quot;&gt;Lưu trữ những dữ liệu cần thiết hoặc được sử dụng nhiều trong một &quot;kho chứa&quot; để lần lấy ra tiếp theo sẽ nhanh hơn.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Trong thực tế, cache không nhanh hơn thanh ghi (register) nhưng nhanh hơn nhiều khi so với bộ nhớ chính ( main memory). Để truy cập dữ liệu từ bộ nhớ chính sẽ tốn nhiều thời gian, vậy nên để giảm quá trình này một vùng nhớ đặc biệt trong CPU sẽ được dành riêng chứa một lượng nhỏ dữ liệu cần thiết. Khi một tiến trình muốn tiếp cận lượng dữ liệu trên, đầu tiên nó sẽ kiểm tra trong cache, nếu tìm thấy thì lấy ra và chế biến, nếu không nó mới đi tiếp tới bộ nhớ chính.&lt;/p&gt;
+
+&lt;p&gt;Cache phải tuân thủ theo &lt;b&gt;replacement policy&lt;/b&gt; khi dung lượng vượt quá giới hạn:&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;-  Quyết định được dữ liệu nào cần loại bỏ.&lt;/li&gt;
+    &lt;li&gt;-  Tối thiếu được số lượng cache misses. &lt;/li&gt;
+    &lt;li&gt;-  Chi phí thấp. &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Có rất nhiều thuật toán implement cache, trong đó có 2 thuật toán đơn giản là &lt;b&gt;Least Recently Used&lt;/b&gt; và&lt;b&gt; Least Frequently Used&lt;/b&gt; được sử dụng rộng rãi. Và cũng là 2 thuật toán tôi muốn giới thiệu trong bài viết này.&lt;/p&gt;
+
+&lt;h3&gt;&lt;b&gt; Least Recently Used &lt;/b&gt;&lt;/h3&gt;
+&lt;p&gt;Thuật toán này lấy thời gian lần cuối sử dụng object để quyết định có loại bỏ hay không?. Cụ thể, nó sẽ xóa object có thời điểm được sử dụng gần nhất cách thời điểm hiện tại xa nhất khỏi bộ nhớ khi bộ chứa đạt tới giới hạn. Một object vừa được truy cập sẽ được đẩy vào cache hoặc ghi đè thời gian sử dụng nếu đã nằm sẵn trong cache.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p style=&quot;font-size:16px;text-align:center&quot;&gt;Ví dụ: Bạn có một tủ chật kín quần áo và cần bỏ đi vài cái để sắm quần áo mới. Lúc này bạn sẽ loại đi những bộ quần áo mà lần gần nhất bạn mặc cách đây lâu nhất. Để giả định này đúng, do uống trà sữa quá nhiều nên tăng cân, bạn không thể mặc những bộ quần áo cũ mặc dù rất đẹp. Lần cuối mặc nó là lúc chưa tăng cân.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h5&gt; &lt;u&gt;Phân tích cấu trúc dữ liệu:&lt;/u&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;br /&gt;
+Để implement được LRU, cần có một data structure đảm bảo được:&lt;/p&gt;
+
+&lt;table style=&quot;border-collapse: collapse;&quot;&gt;
+  &lt;tr&gt;
+    &lt;th style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;Yêu cầu&lt;/th&gt;
+    &lt;th style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Data structure&lt;/th&gt;
+    &lt;th style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Chi phí độ phức tạp&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;Tìm kiếm&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;HashMap hoặc HashTable.&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;O(1)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;Thêm mới một object&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Static array, linked list, Hashmap ( HashTable ) với tỉ lệ collision thấp. &lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;O(1)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan=&quot;2&quot; style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;Xóa object gần nhất sử dụng cách hiện tại xa nhất.&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Double Linked list được sắp xếp theo thời gian gần nhất sử dụng tăng dần.&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;O(1)&lt;/td&gt;
+  &lt;/tr&gt;
+   &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Hàng đợi ưu tiên ( Priority queue). Cụ thể là Min-heap với key là thời gian gần nhất truy cập của object. &lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;O(logn)&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td rowspan=&quot;2&quot; style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;Khi một object đã có trong cache được truy cập thì sẽ ghi đè thời điểm hiện tại vào cache. Đồng thời vẫn đảm bảo vị trí các object theo chiều tăng dần thời gian.&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Sử dụng HashMap(HashTable) cho tìm kiếm O(1). Với double linked list thì xóa O(1). Sau đó thêm mới object với thời gian hiện tại là O(1).  &lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;O(1)&lt;/td&gt;
+  &lt;/tr&gt;
+   &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Min-heap như trên. Để đảm bảo tính đúng của Min_heap thì sử dụng heapify cho ta O(logn). &lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;O(logn)&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br /&gt;
+Với bảng phân tích như trên chúng ta dễ dàng chọn được cấu trúc dữ liệu thích hợp và tốt nhất để xây dựng LRU là : &lt;b&gt;HashMap&lt;/b&gt; và&lt;b&gt; Double Linked List&lt;/b&gt;.&lt;/p&gt;
+
+&lt;h5&gt; &lt;u&gt;Implement LRU:&lt;/u&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;b&gt;LRU node &lt;/b&gt;chứa dữ liệu, thời gian sử dụng và 2 con trỏ tới các node khác.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Hash Map&lt;/b&gt; giữ key và LRU node tương ứng.&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;Double Linked List&lt;/b&gt; lưu head là node chứa dữ liệu có thời gian sử dụng cuối cùng xa nhất. Ngược lại, tail sẽ lưu node được sử dụng gần đầy nhất.&lt;/p&gt;
+&lt;p&gt;&lt;br /&gt;
+ &lt;img src=&quot;/assets/img/blog/content/lru-1.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h5&gt; &lt;u&gt;Coding LRU:&lt;/u&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;b&gt;LRU Node&lt;/b&gt;
+&lt;br /&gt;
+ &lt;img src=&quot;/assets/img/blog/content/lru-code1.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;b&gt;Double Linked List&lt;/b&gt;
+&lt;br /&gt;
+ &lt;img src=&quot;/assets/img/blog/content/lru-code2.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;img src=&quot;/assets/img/blog/content/lru-code3.png&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
+
+&lt;h5&gt; &lt;u&gt;Đánh giá:&lt;/u&gt;&lt;/h5&gt;
+&lt;p&gt;Mình sẽ so sánh kết quả với implemet LRU chỉ bằng priority heap. Sử dụng thư viện &lt;b&gt;cProfile&lt;/b&gt; và 100000 hành động put, 1000 hành động get như sau:
+&lt;img src=&quot;/assets/img/blog/content/lru-compare.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;u&gt;HashTable + Double Linked List:&lt;/u&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;img src=&quot;/assets/img/blog/content/lru-compare1.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;u&gt;Priority Heap:&lt;/u&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;img src=&quot;/assets/img/blog/content/lru-compare2.png&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
+&lt;p&gt; Bỏ thời gian thực hiện random một giá trị cho phần test. Để khách quan, chúng ta không lấy kết quả của hàm tìm kiếm vì với heap sẽ có O(n) ( vì giá trị tìm kiếm không phải là giá trị xây dựng heap ), mà chỉ so sánh thời gian thực hiện hàm xóa và duy trì tính đúng của heap.&lt;/p&gt;
+</description>
+      </item>
     
       <item>
         <title>Tâm sự cùng mưa</title>
