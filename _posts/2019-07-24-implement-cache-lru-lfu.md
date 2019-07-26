@@ -92,19 +92,19 @@ Với bảng phân tích như trên chúng ta dễ dàng chọn được cấu t
 <b>Double Linked List</b>
 <br>
  ![Complicated process](/assets/img/blog/content/lru-code2.png)
-![Complicated process](/assets/img/blog/content/lru-code3.png)
+![Complicated process](/assets/img/blog/content/lru-code3.PNG)
 
 <h5> <u>Đánh giá:</u></h5>
 Mình sẽ so sánh kết quả với implemet LRU chỉ bằng priority heap. Sử dụng thư viện <b>cProfile</b> và 100000 hành động put, 1000 hành động get như sau:
-![Complicated process](/assets/img/blog/content/lru-compare.png)
+![Complicated process](/assets/img/blog/content/lru-compare.PNG)
 <br><br>
 <u>HashTable + Double Linked List:</u>
 <br>
 <br>
-![Complicated process](/assets/img/blog/content/lru-compare1.png)
+![Complicated process](/assets/img/blog/content/lru-compare1.PNG)
 <br><br>
 <u>Priority Heap:</u>
 <br>
 <br>
-![Complicated process](/assets/img/blog/content/lru-compare2.png)
+![Complicated process](/assets/img/blog/content/lru-compare2.PNG)
 <p> Bỏ thời gian thực hiện random một giá trị cho phần test. Để khách quan, chúng ta không lấy kết quả của hàm tìm kiếm vì với heap sẽ có O(n) ( vì giá trị tìm kiếm không phải là giá trị xây dựng heap ), mà chỉ so sánh thời gian thực hiện hàm xóa và duy trì tính đúng của heap.</p>

@@ -6,8 +6,8 @@
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Fri, 26 Jul 2019 05:20:37 -0500</pubDate>
-    <lastBuildDate>Fri, 26 Jul 2019 05:20:37 -0500</lastBuildDate>
+    <pubDate>Fri, 26 Jul 2019 05:27:16 -0500</pubDate>
+    <lastBuildDate>Fri, 26 Jul 2019 05:27:16 -0500</lastBuildDate>
 
     
       <item>
@@ -104,21 +104,21 @@ Với bảng phân tích như trên chúng ta dễ dàng chọn được cấu t
 &lt;b&gt;Double Linked List&lt;/b&gt;
 &lt;br /&gt;
  &lt;img src=&quot;/assets/img/blog/content/lru-code2.png&quot; alt=&quot;Complicated process&quot; /&gt;
-&lt;img src=&quot;/assets/img/blog/content/lru-code3.png&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/img/blog/content/lru-code3.PNG&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
 
 &lt;h5&gt; &lt;u&gt;Đánh giá:&lt;/u&gt;&lt;/h5&gt;
 &lt;p&gt;Mình sẽ so sánh kết quả với implemet LRU chỉ bằng priority heap. Sử dụng thư viện &lt;b&gt;cProfile&lt;/b&gt; và 100000 hành động put, 1000 hành động get như sau:
-&lt;img src=&quot;/assets/img/blog/content/lru-compare.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;img src=&quot;/assets/img/blog/content/lru-compare.PNG&quot; alt=&quot;Complicated process&quot; /&gt;
 &lt;br /&gt;&lt;br /&gt;
 &lt;u&gt;HashTable + Double Linked List:&lt;/u&gt;
 &lt;br /&gt;
 &lt;br /&gt;
-&lt;img src=&quot;/assets/img/blog/content/lru-compare1.png&quot; alt=&quot;Complicated process&quot; /&gt;
+&lt;img src=&quot;/assets/img/blog/content/lru-compare1.PNG&quot; alt=&quot;Complicated process&quot; /&gt;
 &lt;br /&gt;&lt;br /&gt;
 &lt;u&gt;Priority Heap:&lt;/u&gt;
 &lt;br /&gt;
 &lt;br /&gt;
-&lt;img src=&quot;/assets/img/blog/content/lru-compare2.png&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;/assets/img/blog/content/lru-compare2.PNG&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
 &lt;p&gt; Bỏ thời gian thực hiện random một giá trị cho phần test. Để khách quan, chúng ta không lấy kết quả của hàm tìm kiếm vì với heap sẽ có O(n) ( vì giá trị tìm kiếm không phải là giá trị xây dựng heap ), mà chỉ so sánh thời gian thực hiện hàm xóa và duy trì tính đúng của heap.&lt;/p&gt;
 </description>
       </item>
