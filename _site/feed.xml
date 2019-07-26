@@ -6,8 +6,8 @@
     <atom:link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/rss+xml" />
     <description></description>
     <language>en-us</language>
-    <pubDate>Fri, 26 Jul 2019 05:27:16 -0500</pubDate>
-    <lastBuildDate>Fri, 26 Jul 2019 05:27:16 -0500</lastBuildDate>
+    <pubDate>Fri, 26 Jul 2019 06:45:15 -0500</pubDate>
+    <lastBuildDate>Fri, 26 Jul 2019 06:45:15 -0500</lastBuildDate>
 
     
       <item>
@@ -106,8 +106,10 @@ Với bảng phân tích như trên chúng ta dễ dàng chọn được cấu t
  &lt;img src=&quot;/assets/img/blog/content/lru-code2.png&quot; alt=&quot;Complicated process&quot; /&gt;
 &lt;img src=&quot;/assets/img/blog/content/lru-code3.PNG&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
 
-&lt;h5&gt; &lt;u&gt;Đánh giá:&lt;/u&gt;&lt;/h5&gt;
-&lt;p&gt;Mình sẽ so sánh kết quả với implemet LRU chỉ bằng priority heap. Sử dụng thư viện &lt;b&gt;cProfile&lt;/b&gt; và 100000 hành động put, 1000 hành động get như sau:
+&lt;h5&gt; &lt;u&gt;Đánh giá với implement bằng priority heap:&lt;/u&gt;&lt;/h5&gt;
+&lt;p&gt;Sử dụng thư viện &lt;b&gt;cProfile&lt;/b&gt; để đánh giá hiệu năng.&lt;br /&gt;
+Cache chứa được 2048 phần tử, giá trị random từ 1 đến 5000, 100000 hành động put và 1000 hành động get.
+&lt;br /&gt;
 &lt;img src=&quot;/assets/img/blog/content/lru-compare.PNG&quot; alt=&quot;Complicated process&quot; /&gt;
 &lt;br /&gt;&lt;br /&gt;
 &lt;u&gt;HashTable + Double Linked List:&lt;/u&gt;
@@ -119,7 +121,36 @@ Với bảng phân tích như trên chúng ta dễ dàng chọn được cấu t
 &lt;br /&gt;
 &lt;br /&gt;
 &lt;img src=&quot;/assets/img/blog/content/lru-compare2.PNG&quot; alt=&quot;Complicated process&quot; /&gt;&lt;/p&gt;
-&lt;p&gt; Bỏ thời gian thực hiện random một giá trị cho phần test. Để khách quan, chúng ta không lấy kết quả của hàm tìm kiếm vì với heap sẽ có O(n) ( vì giá trị tìm kiếm không phải là giá trị xây dựng heap ), mà chỉ so sánh thời gian thực hiện hàm xóa và duy trì tính đúng của heap.&lt;/p&gt;
+&lt;p&gt; Bỏ thời gian thực hiện random một giá trị cho phần test và các hàm khởi tạo khác. Để khách quan, chúng ta không xét thời gian của hàm tìm kiếm vì với heap sẽ có O(n) ( vì giá trị tìm kiếm không phải là giá trị xây dựng heap ), mà chỉ so sánh thời gian thực hiện hàm xóa và duy trì tính đúng của heap.&lt;/p&gt;
+&lt;table style=&quot;border-collapse: collapse;&quot;&gt;
+  &lt;tr&gt;
+    &lt;th style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;Action&lt;/th&gt;
+    &lt;th style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Double Linked List + Hash map&lt;/th&gt;
+    &lt;th style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;Priority Heap&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;removeNode + Heapify(for Heap)&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;0.21&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;3.216&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;updateNode + Heapify(for Heap)&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;1.24 &lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;0.639&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;addNode&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;0.02&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;0.008&lt;/td&gt;
+  &lt;/tr&gt;
+   &lt;tr&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px; width:50%&quot;&gt;Heapify&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;0&lt;/td&gt;
+    &lt;td style=&quot;border: 1px solid black;  text-align: left; padding:5px;&quot;&gt;3.670&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;br /&gt;
+Heapify có độc phức tạp là O(logn). Vậy nên khi so sánh update và remove với HashMap + Double Linked List có O(1) thì thời gian chênh nhau khá lớn. Chỉ tính riêng Heapify đã chiếm thời gian nhiều nhất. Ở bài tiếp theo tôi sẽ giới thiệu &lt;b&gt; Least Frequently Used&lt;/b&gt;.&lt;/p&gt;
 </description>
       </item>
     

@@ -94,8 +94,10 @@ Với bảng phân tích như trên chúng ta dễ dàng chọn được cấu t
  ![Complicated process](/assets/img/blog/content/lru-code2.png)
 ![Complicated process](/assets/img/blog/content/lru-code3.PNG)
 
-<h5> <u>Đánh giá:</u></h5>
-Mình sẽ so sánh kết quả với implemet LRU chỉ bằng priority heap. Sử dụng thư viện <b>cProfile</b> và 100000 hành động put, 1000 hành động get như sau:
+<h5> <u>Đánh giá với implement bằng priority heap:</u></h5>
+Sử dụng thư viện <b>cProfile</b> để đánh giá hiệu năng.<br>
+Cache chứa được 2048 phần tử, giá trị random từ 1 đến 5000, 100000 hành động put và 1000 hành động get.
+<br>
 ![Complicated process](/assets/img/blog/content/lru-compare.PNG)
 <br><br>
 <u>HashTable + Double Linked List:</u>
@@ -107,4 +109,33 @@ Mình sẽ so sánh kết quả với implemet LRU chỉ bằng priority heap. S
 <br>
 <br>
 ![Complicated process](/assets/img/blog/content/lru-compare2.PNG)
-<p> Bỏ thời gian thực hiện random một giá trị cho phần test. Để khách quan, chúng ta không lấy kết quả của hàm tìm kiếm vì với heap sẽ có O(n) ( vì giá trị tìm kiếm không phải là giá trị xây dựng heap ), mà chỉ so sánh thời gian thực hiện hàm xóa và duy trì tính đúng của heap.</p>
+<p> Bỏ thời gian thực hiện random một giá trị cho phần test và các hàm khởi tạo khác. Để khách quan, chúng ta không xét thời gian của hàm tìm kiếm vì với heap sẽ có O(n) ( vì giá trị tìm kiếm không phải là giá trị xây dựng heap ), mà chỉ so sánh thời gian thực hiện hàm xóa và duy trì tính đúng của heap.</p>
+<table style="border-collapse: collapse;">
+  <tr >
+    <th style="border: 1px solid black;  text-align: left; padding:5px; width:50%">Action</th>
+    <th style="border: 1px solid black;  text-align: left; padding:5px;">Double Linked List + Hash map</th>
+    <th style="border: 1px solid black;  text-align: left; padding:5px;">Priority Heap</th>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;  text-align: left; padding:5px; width:50%">removeNode + Heapify(for Heap)</td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">0.21</td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">3.216</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;  text-align: left; padding:5px; width:50%">updateNode + Heapify(for Heap)</td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">1.24 </td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">0.639</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid black;  text-align: left; padding:5px; width:50%">addNode</td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">0.02</td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">0.008</td>
+  </tr>
+   <tr>
+    <td style="border: 1px solid black;  text-align: left; padding:5px; width:50%">Heapify</td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">0</td>
+    <td style="border: 1px solid black;  text-align: left; padding:5px;">3.670</td>
+  </tr>
+</table>
+<br>
+Heapify có độc phức tạp là O(logn). Vậy nên khi so sánh update và remove với HashMap + Double Linked List có O(1) thì thời gian chênh nhau khá lớn. Chỉ tính riêng Heapify đã chiếm thời gian nhiều nhất. Ở bài tiếp theo tôi sẽ giới thiệu <b> Least Frequently Used</b>.
